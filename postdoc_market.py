@@ -42,7 +42,7 @@ Inject a test candidate
     result = cohort.get_injected_result()
 """
 
-import sys
+import sys, os
 import numpy as np
 from collections import defaultdict
 from typing import Optional, List, Tuple
@@ -58,7 +58,7 @@ def _mallows_rank(pool: list, applicants: list, phi: float) -> list:
     The reference (modal) ranking is skill-descending order.
     phi=0 -> pure skill order, phi=1 -> uniform random.
     """
-    sys.path.append("top-k-mallows")
+    sys.path.append(os.path.join(os.path.dirname(__file__), "top-k-mallows"))
     import mallows_kendall as mk
 
     if len(pool) == 0:
